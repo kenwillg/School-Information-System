@@ -1,0 +1,82 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/dashboard.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <h2>Title</h2>
+        <a href="/dashboard"><h3>Back to Dashboard</h3></a>
+        <p class="sidebar-title">KEGIATAN BELAJAR</p>
+        <a href="/student/jadwal_pelajaran">
+          <span class="material-icons-round">calendar_month</span>
+          <h3 class="sidebar-text">Jadwal Pelajaran</h3>
+        </a>
+        <a href="/teacher/nilai_semester">
+          <span class="material-icons-round">description</span>
+          <h3 class="sidebar-text">Nilai Semester</h3>
+        </a>
+        <a href="/student/ekstrakurikuler">
+          <span class="material-icons-round">self_improvement</span>
+          <h3 class="sidebar-text">Ekstrakurikuler</h3>
+        </a>
+        <p class="sidebar-title">INFORMASI SEKOLAH</p>
+        <a href="/data_guru">
+          <span class="material-icons-round">supervisor_account</span>
+          <h3 class="sidebar-text">Data Guru</h3>
+        </a>
+        <a href="/data_siswa">
+          <span class="material-icons-round">diversity_3</span>
+          <h3 class="sidebar-text">Data Siswa</h3>
+        </a>
+        <a href="/auth/logout" class="logout-btn">Logout</a>
+      </nav>
+      <div class="inner-container">
+      <div class="header">
+        <img src="/images/bg.jpg">
+        <div class="profile-img">
+          <div class="profile-circle"></div>
+        </div>
+        <div class="name">
+          <h1>{{user.nama}}</h1>
+        </div>
+      </div>
+      <div class="today-schedule-box">
+        <h1>Jadwal Mengajar Hari ini:</h1>
+        {{#if jadwal_pelajaran.length}}
+          {{#each jadwal_pelajaran}}
+            <div class="schedule-item">
+              <p>{{nama_mapel}}</p>
+              <p>From {{jam_mulai}} to {{jam_akhir}}</p>
+            </div>
+          {{/each}}
+        {{else}}
+          <p>No schedule for today.</p>
+        {{/if}}
+      </div>
+      <div class="remed-boxes">
+        <h3>Remedial Kuis</h3>
+        {{#each studentGrades}}
+          {{#if (calculateRemedial nilai_kuis)}}
+            <div class="status-remed">
+              <p>{{nama_mapel}}: {{nilai_kuis}}</p>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+      <div class="notice-box">
+        <h3>Notices: </h3>
+      </div>
+      </div>
+    </div>
+    </div>
+  </body>
+  </html>

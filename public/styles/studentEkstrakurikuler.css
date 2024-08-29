@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  appearance: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.7;
+  background-repeat: no-repeat;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000022;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 3fr;
+  grid-template-areas: 
+    "sidebar inner";
+}
+
+.inner-container {
+  padding: 20px;
+  grid-area: inner;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 3fr;
+  grid-template-areas: 
+    "header"
+    "main";
+  background-color: whitesmoke;
+  height: 100vh;
+  width: 80vw;
+  grid-gap: 20px;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  background: rgb(202, 202, 226);
+  padding: 20px;
+  align-items: center;
+}
+
+.header h1{
+  font-size: 32px;
+}
+
+main{
+  grid-area: main;
+  background-color: #aacbf7;
+}
+
+.profile-img {
+  grid-area: pic;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-circle {
+  border-radius: 50%;
+  background-color: #1c324e;
+  width: 150px;
+  height: 150px;
+}
+
+.name {
+  grid-area: name;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  color: white;
+}
+
+.name h1 {
+  font-size: 56px;
+}
+
+.name h2 {
+  font-weight: 400;
+}
+
+.today-schedule-box {
+  grid-area: today-sched;
+  display: flex;
+  flex-direction: column;
+  background-color: #347BAD;
+  color: white;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.schedule-item {
+  background-color: #f1f1f1;
+
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.schedule-item p {
+  margin: 5px 0;
+  color: #000022;
+}
+
+.remed-boxes {
+  grid-area: remed;
+  display: grid;
+  background-color: #BAD6EB;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 1fr;
+  grid-template-areas:
+  "remed-title"
+  "status-remed";
+  padding: 20px;
+  grid-gap: 10px;
+}
+
+.remed-boxes h3{
+  grid-area: remed-title;
+}
+
+.status-remed{
+  grid-area: status-remed;
+  background-color: #FF8282;
+  padding: 10px;
+  color:white;
+  overflow: auto;
+}
+
+.status-remed p{
+  border-bottom: 1px solid white;
+}
+
+.notice-box {
+  grid-area: notice;
+  display: flex;
+  background-color: bisque;
+  padding: 20px;
+}
+
+nav {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 100vh;
+  background-color: #D0E4FF;
+}
+
+nav a {
+  position: relative;
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  gap: 15px;
+}
+
+nav a span {
+  margin-left: 10px;
+}
+
+.sidebar-title {
+  display: block;
+  background-color: #aacbf7;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 2px 5px;
+}
+
+.sidebar-text {
+  font-weight: 500;
+  font-size: 16px;
+}
+.inner-container {
+  padding: 20px;
+  background-color: whitesmoke;
+  overflow-y: auto;
+}
+
+.inner-container h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.ekstrakurikuler-saya{
+  border-bottom:  1px solid black;
+}
+
+.ekstrakurikuler-saya, .available-ekstrakurikuler {
+  margin-bottom: 25px;
+}
+
+.ekstrakurikuler-saya h2, .available-ekstrakurikuler h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card {
+  background-color: #aacbf7;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 350px;
+}
+
+.card h3 {
+  font-size: 20px;
+}
+
+.card p {
+  font-size: 16px;
+}
+
+.keluar-btn, .join-btn {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.keluar-btn {
+  background-color: #ff6666;
+  color: white;
+}
+
+.join-btn {
+  background-color: #66ff66;
+  color: white;
+}
+
+.join-btn.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.logout-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 200px;
+  border-radius: 30px;
+  height: 40px;
+  background-color: rgb(83, 83, 243);
+  color: #fff;
+}
+
+.logout-btn:hover {
+  background-color: rgb(62, 62, 196);
+  transition: 0.2s ease;
+}

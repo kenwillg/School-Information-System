@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/studentEkstrakurikuler.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <title>Ekstrakurikuler</title>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <h2>Title</h2>
+      <a href="/dashboard"><h3>Back to Dashboard</h3></a>
+      <p class="sidebar-title">KEGIATAN BELAJAR</p>
+      <a href="/student/jadwal_pelajaran">
+        <span class="material-icons-round">calendar_month</span>
+        <h3 class="sidebar-text">Jadwal Pelajaran</h3>
+      </a>
+      <a href="/student/nilai_semester">
+        <span class="material-icons-round">description</span>
+        <h3 class="sidebar-text">Nilai Semester</h3>
+      </a>
+      <a href="/student/ekstrakurikuler">
+        <span class="material-icons-round">self_improvement</span>
+        <h3 class="sidebar-text">Ekstrakurikuler</h3>
+      </a>
+      <p class="sidebar-title">INFORMASI SEKOLAH</p>
+      <a href="/data_guru">
+        <span class="material-icons-round">supervisor_account</span>
+        <h3 class="sidebar-text">Data Guru</h3>
+      </a>
+      <a href="/data_siswa">
+        <span class="material-icons-round">diversity_3</span>
+        <h3 class="sidebar-text">Data Siswa</h3>
+      </a>
+      <a href="/auth/logout" class="logout-btn">Logout</a>
+    </nav>
+    <div class="inner-container">
+      <h1>Ekstrakurikuler</h1>
+      <div class="ekstrakurikuler-saya">
+        <h2>Ekstrakurikuler Saya</h2>
+{{#each myEkstrakurikuler}}
+        <div class="card">
+          <h3>{{nama}}</h3>
+          <p>Anggota: {{anggota}}/{{maxAnggota}}</p>
+          <p>Jadwal: {{nama_hari}}</p>
+          <p>Ruangan: {{kode_ruang_kelas}}</p>
+          <form action="/student/ekstrakurikuler/remove" method="POST">
+            <input type="hidden" name="ekskulId" value="{{id}}">
+            <button type="submit" class="keluar-btn">Keluar</button>
+          </form>
+        </div>
+        {{/each}}
+      </div>
+      <div class="available-ekstrakurikuler">
+        <h2>Daftar Ekstrakurikuler</h2>
+        {{#each availableEkstrakurikuler}}
+        <div class="card">
+          <h3>{{nama}}</h3>
+          <p>Anggota: {{anggota}}/{{maxAnggota}}</p>
+          <p>Jadwal: {{nama_hari}}</p>
+          <p>Ruangan: {{kode_ruang_kelas}}</p>
+          <form action="/student/ekstrakurikuler/add" method="POST">
+            <input type="hidden" name="ekskulId" value="{{id}}">
+            {{#if anggotaFull}}
+            <button class="join-btn disabled" disabled>Bergabung</button>
+            {{else}}
+            <button type="submit" class="join-btn">Bergabung</button>
+            {{/if}}
+          </form>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
